@@ -1,0 +1,24 @@
+current directory: /mnt/d/Projects/DevOps/Library/vendor/bundle/ruby/3.2.0/gems/date-3.3.4/ext/date
+/home/kabi/.asdf/installs/ruby/3.2.2/bin/ruby extconf.rb
+checking for rb_category_warn()... yes
+checking for timezone in time.h with  -Werror... yes
+checking for altzone in time.h with  -Werror... no
+creating Makefile
+
+current directory: /mnt/d/Projects/DevOps/Library/vendor/bundle/ruby/3.2.0/gems/date-3.3.4/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20231212-23008-v61hls sitelibdir\=./.gem.20231212-23008-v61hls clean
+
+current directory: /mnt/d/Projects/DevOps/Library/vendor/bundle/ruby/3.2.0/gems/date-3.3.4/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20231212-23008-v61hls sitelibdir\=./.gem.20231212-23008-v61hls
+compiling date_core.c
+compiling date_parse.c
+compiling date_strftime.c
+compiling date_strptime.c
+linking shared-object date_core.so
+
+current directory: /mnt/d/Projects/DevOps/Library/vendor/bundle/ruby/3.2.0/gems/date-3.3.4/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20231212-23008-v61hls sitelibdir\=./.gem.20231212-23008-v61hls install
+/usr/bin/install -c -m 0755 date_core.so ./.gem.20231212-23008-v61hls
+
+current directory: /mnt/d/Projects/DevOps/Library/vendor/bundle/ruby/3.2.0/gems/date-3.3.4/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20231212-23008-v61hls sitelibdir\=./.gem.20231212-23008-v61hls clean
