@@ -67,4 +67,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem 'rspec-rails', ">= 3.9.0"
+  gem 'ci_reporter'
+  gem 'ci_reporter_rspec'
+  gem "brakeman", :require => false
 end
