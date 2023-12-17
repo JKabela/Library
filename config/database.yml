@@ -27,7 +27,7 @@ development:
   # To create additional roles in PostgreSQL see `$ createuser --help`.
   # When left blank, PostgreSQL will use the default role. This is
   # the same name as the operating system user running Rails.
-  username: rails
+  #username: rails
 
   # The password associated with the PostgreSQL role (username).
   #password: postgres 
@@ -56,7 +56,7 @@ development:
 test:
   <<: *default
   database: library_test
-  username: rails
+  #username: rails
   #password: postgres 
 
 # As with config/credentials.yml, you never want to store sensitive information,
