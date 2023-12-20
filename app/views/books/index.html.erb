@@ -1,0 +1,7 @@
+<h1>Welcome to your library</h1>
+<h3>Here are your books</h3>
+<ul>
+  <% @books.each do |book| %>
+    <li><%= "#{book.name} by #{book.author} released #{book.release_date}" %></li>
+  <% end %>
+</ul>
