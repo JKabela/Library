@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+
+/* app/assets/stylesheets/application.css */
+.rectangle-button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid #3498db; /* Border color */
+  text-decoration: none; /* Remove default underline for links */
+  color: #3498db; /* Text color */
+  font-weight: bold;
+  border-radius: 5px; /* Optional: Rounded corners */
+}
+
+.rectangle-button:hover {
+  background-color: #3498db; /* Change background color on hover */
+  color: #fff; /* Change text color on hover */
+}

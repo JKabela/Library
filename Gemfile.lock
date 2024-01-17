@@ -82,6 +82,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.17.0)
       msgpack (~> 1.2)
+    brakeman (6.1.0)
     builder (3.2.4)
     capybara (3.39.2)
       addressable
@@ -92,6 +93,12 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    ci_reporter (2.1.0)
+      builder (>= 2.1.2)
+      rexml
+    ci_reporter_rspec (1.0.0)
+      ci_reporter (~> 2.0)
+      rspec (>= 2.14, < 4)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
     crass (1.0.6)
@@ -195,6 +202,10 @@ GEM
     reline (0.4.1)
       io-console (~> 0.5)
     rexml (3.2.6)
+    rspec (3.12.0)
+      rspec-core (~> 3.12.0)
+      rspec-expectations (~> 3.12.0)
+      rspec-mocks (~> 3.12.0)
     rspec-core (3.12.2)
       rspec-support (~> 3.12.0)
     rspec-expectations (3.12.3)
@@ -255,10 +266,14 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  brakeman
   capybara
+  ci_reporter
+  ci_reporter_rspec
   debug
   importmap-rails
   jbuilder
+  nokogiri
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.1)

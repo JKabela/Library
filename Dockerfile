@@ -1,62 +1,62 @@
-# syntax = docker/dockerfile:1
+FROM ruby:3.2.2
+USER root
 
-# Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
-ARG RUBY_VERSION=3.2.2
-FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
+ARG DEBIAN_FRONTEND=noninteractive
 
-# Rails app lives here
-WORKDIR /rails
+# Set environment variables
+ENV RUBY_VERSION 3.2.2
+ENV RAILS_VERSION 7.0.6
 
-# Set production environment
-ENV RAILS_ENV="production" \
-    BUNDLE_DEPLOYMENT="1" \
-    BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
+WORKDIR /myapp
 
+RUN apt-get update --fix-missing && apt-get install -y \
+          build-essential \
+          default-libmysqlclient-dev \
+          libssl-dev \
+          libreadline-dev \
+          zlib1g-dev \
+          curl \
+          git-core \
+          libxml2-dev \
+          libxslt1-dev \
+          libyaml-dev \
+          libcurl4-openssl-dev \
+          libffi-dev \
+          nodejs \
+          imagemagick \
+          libmagickwand-dev \
+          sudo \
+          postgresql-client \
+          lsb-release \
+          cron \
+		  rake \
+		  vim
 
-# Throw-away build stage to reduce size of final image
-FROM base as build
+# Install Rails
+RUN gem install rails -v $RAILS_VERSION
 
-# Install packages needed to build gems
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git libpq-dev libvips pkg-config
+# Install RubyGems
+RUN gem update --system
 
-# Install application gems
-COPY Gemfile Gemfile.lock ./
-RUN bundle install && \
-    rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
-    bundle exec bootsnap precompile --gemfile
+# Cleaning
+RUN rm -rf /tmp/*
 
-# Copy application code
+# Add application files
 COPY . .
 
-# Precompile bootsnap code for faster boot times
-RUN bundle exec bootsnap precompile app/ lib/
-
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-#RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+# set up cron job
+RUN echo "*/5 * * * * curl http://164.92.188.100:31000/newbook >> /var/log/cron_log.log 2>&1" | crontab -
 
 
-# Final stage for app image
-FROM base
+# Add a script to be executed every time the container starts.
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
 
-# Install packages needed for deployment
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libvips postgresql-client && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+ENTRYPOINT ["entrypoint.sh"]
 
-# Copy built artifacts: gems, application
-COPY --from=build /usr/local/bundle /usr/local/bundle
-COPY --from=build /rails /rails
+RUN useradd rails --create-home --shell /bin/bash 
 
-# Run and own only the runtime files as a non-root user for security
-RUN useradd rails --create-home --shell /bin/bash && \
-    chown -R rails:rails db log storage tmp
-USER rails:rails
-
-# Entrypoint prepares the database.
-ENTRYPOINT ["/rails/bin/docker-entrypoint"]
-
-# Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-CMD ["./bin/rails", "server"]
+# Start the server by default, this can be overwritten at runtime
+
+CMD ["rails", "server", "-b", "0.0.0.0"]

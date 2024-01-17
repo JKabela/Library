@@ -2,6 +2,7 @@
 <h3>Here are your books</h3>
 <ul>
   <% @books.each do |book| %>
-    <li><%= "#{book.name} by #{book.author} released #{book.release_date}" %></li>
-  <% end %>
+    <li><%= "#{book.name} by #{book.author} with #{book.number_of_pages} pages" %></li>
+  <% end %></br></br></br></br></br></br>
+  <%= link_to "Download new book", "/newbook", class: "rectangle-button" %>
 </ul>
