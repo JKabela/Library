@@ -1,0 +1,89 @@
+/* app/assets/stylesheets/books.css */
+
+/* Apply a border to the entire table */
+.book-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Add borders to table headers (th) */
+.book-table th {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Add borders to table cells (td) */
+.book-table td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Optional: Add a border color and background color for the header row */
+.book-table thead tr {
+  background-color: #f2f2f2;
+}
+
+/* Optional: Add a different background color for even rows */
+.book-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Optional: Hover effect for better interactivity */
+.book-table tbody tr:hover {
+  background-color: #e5e5e5;
+}
+
+/* Style for book images */
+.book-image {
+  max-width: 100px; /* Adjust the maximum width of the book images */
+  max-height: 150px; /* Adjust the maximum height of the book images */
+}
+
+/* Style for action buttons */
+.rectangle-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #3498db;
+  color: #ffffff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.rectangle-button:hover {
+  background-color: #2980b9;
+}
+
+.action-button {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #2ecc71;
+  color: #ffffff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+  background-color: #27ae60;
+}
+
+
+.delete-button {
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #ff5555;
+  color: #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}

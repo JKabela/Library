@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :books, only: [:index]
   get 'books/index'
+  
+  resources :books
   
   get 'newbook', to: 'books#scrape'
   get 'reset', to: 'books#reset'

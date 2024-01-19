@@ -1,8 +1,48 @@
-<h1>Welcome to your library</h1>
-<h3>Here are your books</h3>
-<ul>
-  <% @books.each do |book| %>
-    <li><%= "#{book.name} by #{book.author} with #{book.number_of_pages} pages" %></li>
-  <% end %></br></br></br></br></br></br>
-  <%= link_to "Download new book", "/newbook", class: "rectangle-button" %>
-</ul>
+<!-- app/views/books/index.html.erb -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Personal library</title>
+  <%= stylesheet_link_tag 'books' %>
+</head>
+<body>
+
+<h1>Personal library</h1>
+
+<%= link_to "Download new book", "/newbook", class: "rectangle-button" %></br></br></br>
+
+<table class="book-table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Author</th>
+      <th># Pages</th>
+	  <th></th>
+	  <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td>
+          <%= image_tag(book.image_path, alt: 'Book Cover', class: 'book-image') %>
+        </td>
+        <td><%= book.name %></td>
+        <td><%= book.author %></td>
+        <td><%= book.number_of_pages %></td>
+		<td><%= link_to "Detail", book.url, class: "rectangle-button" %></td>
+		<td><%= button_to "Delete", { controller: :books, action: 'destroy', id: book.id }, method: :delete, class: "delete-button", data: { confirm: 'Are you sure?' } %></td>
+		
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</br></br></br>
+<%= link_to "Download new book", "/newbook", class: "rectangle-button" %>
+</br></br></br>
+<%= link_to "Remove all books from library", "/reset", class: "rectangle-button" %></br></br></br>
+
+</body>
+</html>
