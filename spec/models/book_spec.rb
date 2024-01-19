@@ -7,7 +7,7 @@ RSpec.describe Book, type: :model do
 	  name: 'New book',
 	  author: 'John Doe',
 	  number_of_pages: 231,
-	  image_path: '/image', 
+	  image_path: 'books/test.png', 
 	  url: 'url') 
   }
 
