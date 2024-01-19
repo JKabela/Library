@@ -42,13 +42,6 @@ COPY . .
 #Installing application gems
 RUN bundle install
 
-#Create and migrate DB
-rake db:create
-rake db:migrate
-
-#Start cron
-service cron start
-
 # Set up cron job
 RUN echo "*/5 * * * * curl http://164.92.188.100:31000/newbook >> /var/log/cron_log.log 2>&1" | crontab -
 
