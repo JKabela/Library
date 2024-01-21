@@ -103,9 +103,6 @@ GEM
     connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.4)
-    debug (1.9.0)
-      irb (~> 1.10)
-      reline (>= 0.3.8)
     diff-lcs (1.5.0)
     drb (2.2.0)
       ruby2_keywords
@@ -265,24 +262,27 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bootsnap
+  bigdecimal (>= 3.1.4)
+  bindex (>= 0.8.1)
+  bootsnap (>= 1.17.0)
   brakeman
   capybara
   ci_reporter
   ci_reporter_rspec
-  debug
   importmap-rails
   jbuilder
+  msgpack (>= 1.7.2)
   nokogiri
-  pg (~> 1.1)
-  puma (>= 5.0)
+  pg (>= 1.5.4)
+  psych (>= 5.1.1.1)
+  puma (>= 6.4.0)
   rails (~> 7.1.1)
   rspec-rails (>= 3.9.0)
   selenium-webdriver
   sprockets-rails
   stimulus-rails
+  stringio (>= 3.1.0)
   turbo-rails
-  tzinfo-data
   web-console
 
 RUBY VERSION
