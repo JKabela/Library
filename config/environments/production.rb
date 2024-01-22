@@ -17,6 +17,10 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
 
   config.serve_static_files = true
+  
+  config.lograge.enabled = true
+  config.lograge.formatter = Lograge::Formatters::Json.new
+  config.lograge.logger = ActiveSupport::Logger.new(STDOUT)
 
 
   # Ensures that a master key has been made available in ENV["RAILS_MASTER_KEY"], config/master.key, or an environment
