@@ -25,12 +25,6 @@ gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
-#gem  "msgpack", ">= 1.7.2"
-#gem "bindex", ">= 0.8.1"
-#gem "bigdecimal", ">= 3.1.4"
-#gem "psych", ">= 5.1.1.1"
-#gem "stringio", ">= 3.1.0"
-
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
